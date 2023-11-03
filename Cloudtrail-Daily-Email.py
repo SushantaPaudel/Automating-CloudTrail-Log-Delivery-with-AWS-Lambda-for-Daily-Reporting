@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 def get_cloudtrail_events():
     cloudtrail_client = boto3.client('cloudtrail', region_name='us-east-1')
-    function_name = "Cloudtrail-Daily-Email"  # Replace with your Lambda function name
+    function_name = "Your Lambda Function Name"  # Replace with your Lambda function name
     now = datetime.utcnow()
     start_time = now - timedelta(days=1)  # Adjust the time window to 24 hours
 
@@ -27,8 +27,8 @@ def get_cloudtrail_events():
 
 def send_email(events):
     ses_client = boto3.client('ses', region_name='us-east-1')
-    from_email = 'paudel.sushant@gmail.com'  # Replace with your email
-    to_email = 'sushanta.paudel@genesesolution.com'  # Replace with recipient's email
+    from_email = 'Your From Email'  # Replace with your email
+    to_email = 'Your Recipient's Email'  # Replace with recipient's email
 
     subject = 'CloudTrail Events Report'
     body = "\n\n".join([str(event) for event in events])
